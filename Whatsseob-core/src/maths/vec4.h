@@ -6,7 +6,7 @@ namespace whatsseob {
 
 		struct vec4  //lower for matching OpenGL shading langugage
 		{
-			float x, y, z, w;
+			float x, y, z, w; //RGBA
 
 			vec4();
 			vec4(const float& x, const float& y, const float& z, const float& w);

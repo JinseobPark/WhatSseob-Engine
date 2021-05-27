@@ -14,14 +14,12 @@ int main(void)
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 
-	vec4 a = vec4(1.0f, 2.0f, 2.0f, 3.2f);
-	vec4 b = vec4(5, 2, 1, 1);
-	vec4 c = a + b;
+	mat4 position = mat4::translation(vec3(2, 3, 4));
+	position *= mat4::identity();
 	while (!window.closed())
 	{
 		window.clear();
 		
-		std::cout << c << std::endl;
 		//if (window.isMouseButtonPressed(GLFW_MOUSE_BUTTON_LEFT)) //window.isKeyPressed(GLFW_KEY_A)
 		
 #if 1
