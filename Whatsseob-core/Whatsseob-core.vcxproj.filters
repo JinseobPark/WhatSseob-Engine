@@ -39,6 +39,9 @@
     <ClCompile Include="src\maths\mat4.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\shader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\window.h">
@@ -62,5 +65,15 @@
     <ClInclude Include="src\maths\maths_func.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="src\utils\fileutils.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\shaders\basic.vert" />
+    <None Include="src\shaders\basic.frag" />
   </ItemGroup>
 </Project>
