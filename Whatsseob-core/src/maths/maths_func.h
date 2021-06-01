@@ -8,7 +8,7 @@ namespace whatsseob {
 
 		inline float toRadians(float degrees)
 		{
-			return degrees * (M_PI / 180.f);
+			return degrees * ((float)M_PI / 180.f);
 		}
 	}
 }

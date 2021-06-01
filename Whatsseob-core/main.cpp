@@ -3,6 +3,10 @@
 #include "src/utils/fileutils.h"
 #include "src/graphics/shader.h"
 
+#include "src/graphics/buffers/buffer.h"
+#include "src/graphics/buffers/indexbuffer.h"
+#include "src/graphics/buffers/vertexarray.h"
+
 int main(void)
 {
 	using namespace whatsseob;
@@ -11,9 +15,10 @@ int main(void)
 
 
 	Window window("HelloSeob!", 960, 540);
-	glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+	//glClearColor(0.8f, 1.0f, 1.0f, 1.0f);
 
 	//GLuint vao;
+#if 0
 	GLfloat vertices[] =
 	{
 		0, 0, 0, 
@@ -30,6 +35,50 @@ int main(void)
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 	glEnableVertexAttribArray(0);
+
+#else
+	GLfloat vertices[] =
+	{
+		0, 0, 0,
+		0, 3, 0,
+		8, 3, 0,
+		8, 0, 0
+	};
+
+	GLushort indices[] =
+	{
+		0, 1, 2,
+		2, 3, 0
+	};
+
+	GLfloat colorsA[] =
+	{
+		1, 0, 1, 1,
+		1, 0, 1, 1,
+		1, 0, 1, 1,
+		1, 0, 1, 1
+	};
+
+	GLfloat colorsB[] =
+	{
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1,
+		0.2f, 0.3f, 0.8f, 1
+	};
+
+	VertexArray sprite1, sprite2;
+
+	//VertexArray vao;
+	//Buffer* vbo = new Buffer(vertices, 4*3, 3);
+	IndexBuffer ibo(indices, 6);
+
+	sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+	sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
+	sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+	sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
+
+#endif
 	
 	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
@@ -38,14 +87,36 @@ int main(void)
 	shader.setUniformMat4("pr_matrix", ortho);
 	shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 
-	shader.setUniform2f("light_pos", vec2(4.0, 1.5f));
+	shader.setUniform2f("light_pos", vec2(4.0f, 1.5f));
 	shader.setUniform4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
 
 	while (!window.closed())
 	{
 		window.clear();
+		double x, y;
+		window.getMousePosition(x, y);
+		//shader.setUniform2f("light_pos", vec2((float)(x * 16.0f / window.getWidth()), (float)(9.0f - y * 9.0f / window.getHeight())));
+		shader.setUniform2f("light_pos", vec2((float)(x * 16.0f / 960.f), (float)(9.0f - y * 9.0f / 540.f)));
+#if 0
 		glDrawArrays(GL_TRIANGLES, 0, 6);	
+#else
+		sprite1.bind();
+		ibo.bind();
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
+		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+		ibo.bind();
+		sprite1.unbind();
+
+		sprite2.bind();
+		ibo.bind();
+		shader.setUniformMat4("ml_matrix", mat4::translation(vec3(0, 0, 0)));
+		glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+		ibo.unbind();
+		sprite2.unbind();
+		
+
+#endif
 		window.update();
 	}
 
