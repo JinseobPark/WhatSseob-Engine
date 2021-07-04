@@ -15,6 +15,8 @@
 
 #include "src/graphics/static_sprite.h"
 #include "src/graphics/sprite.h"
+#include "src/utils/timer.h"
+
 #include <time.h>
 
 #define BATCH_RENDERER 1
@@ -33,7 +35,6 @@ int main(void)
 
 	shader.enable();
 	shader.setUniformMat4("pr_matrix", ortho);
-	//shader.setUniformMat4("ml_matrix", mat4::translation(vec3(4, 3, 0)));
 	std::vector<Renderable2D*> sprites;
 
 	srand(time(NULL));
@@ -72,8 +73,16 @@ int main(void)
 	shader.setUniform4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
 
 
+	Timer time;
+	float timer = 0;
+	unsigned int frames = 0;
 	while (!window.closed())
 	{
+		//timer.reset();
+		mat4 mat = mat4::translation(vec3(5, 5, 5));
+		mat = mat * mat4::rotation(time.elapsed() * 50.0f, vec3(0, 0, 1));
+		mat = mat * mat4::translation(vec3(-5, -5, -5));
+		shader.setUniformMat4("ml_matrix", mat);
 		window.clear();
 		double x, y;
 		window.getMousePosition(x, y);
@@ -92,6 +101,14 @@ int main(void)
 		renderer.flush();
 
 		window.update();
+		frames++;
+		if (time.elapsed() - timer > 1.0f)
+		{
+			timer += 1.0f;
+			printf("%d fps\n", frames);
+			frames = 0;
+		}
+		//printf("%f ms\n", time.elapsed());
 	}
 
 	return 0;

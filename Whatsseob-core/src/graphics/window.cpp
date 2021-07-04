@@ -51,6 +51,7 @@ namespace whatsseob { namespace graphics {
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 			glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 			glfwSetKeyCallback(m_Window, key_callback);
+			glfwSwapInterval(0.0);
 
 			std::cout << "OpenGL " << glGetString(GL_VERSION) << std::endl;
 

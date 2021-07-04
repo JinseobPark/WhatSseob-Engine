@@ -12,7 +12,8 @@ namespace whatsseob {
 		struct VertexData //for vertex
 		{
 			maths::vec3 vertex;
-			maths::vec4 color;
+			//maths::vec4 color;
+			unsigned int color;
 		};
 
 
