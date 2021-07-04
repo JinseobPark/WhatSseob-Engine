@@ -16,7 +16,7 @@
 #include "src/graphics/static_sprite.h"
 #include "src/graphics/sprite.h"
 #include "src/utils/timer.h"
-
+#include "src/graphics/layers/tilelayer.h"
 #include <time.h>
 
 #define BATCH_RENDERER 1
@@ -29,76 +29,43 @@ int main(void)
 
 	Window window("HelloSeob!", 960, 540);
 
-	
-	mat4 ortho = mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
-	Shader shader("src/shaders/basic.vert", "src/shaders/basic.frag");
 
+	mat4 ortho = mat4::orthographic(16.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
+	Shader* s1 =  new Shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	Shader* s2 = new Shader("src/shaders/basic.vert", "src/shaders/basic.frag");
+	Shader& shader = *s1;
+	Shader& shader2 = *s2;
 	shader.enable();
-	shader.setUniformMat4("pr_matrix", ortho);
-	std::vector<Renderable2D*> sprites;
+	shader2.enable();
+	shader.setUniform2f("light_pos", vec2(4.0f, 1.5f));
+	shader2.setUniform2f("light_pos", vec2(4.0f, 1.5f));
 
-	srand(time(NULL));
-
-	for (float y = 0; y < 9.0f; y+= 0.05)
+	TileLayer layer(&shader);
+	for (float y = -9.0f; y < 9.0f; y += 0.1)
 	{
-		for (float x = 0; x < 16.0f; x+= 0.05)
+		for (float x = -16.0f; x < 16.0f; x += 0.1)
 		{
-			sprites.push_back(new 
-#if BATCH_RENDERER
-				Sprite
-#else
-				StaticSprite
-#endif
-				(x, y, 0.04f, 0.04f, maths::vec4(rand() % 1000 / 1000.0f, 0, 1, 1)
-#if !BATCH_RENDERER
-					, shader
-#endif
-					));
+			layer.add(new Sprite(x, y, 0.09f, 0.09f, maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1.0f, 1.0f)));
 		}
 	}
-
-#if BATCH_RENDERER
-	Sprite sprite(5, 5, 4, 4, maths::vec4(1, 0, 1, 1));
-	Sprite sprite2(5, 1, 2, 3, maths::vec4(0, 1, 1, 1));
-	BatchRenderer2D renderer;
-#else
-	StaticSprite sprite(5, 5, 4, 4, maths::vec4(1, 0, 1, 1), shader);
-	StaticSprite sprite2(5, 1, 2, 3, maths::vec4(0, 1, 1, 1), shader);
-	Simple2DRenderer renderer;
-#endif
-
-
-
-	shader.setUniform2f("light_pos", vec2(4.0f, 1.5f));
-	shader.setUniform4f("colour", vec4(0.2f, 0.3f, 0.8f, 1.0f));
-
+	TileLayer layer2(&shader2);
+	layer2.add(new Sprite(-2, -2, 4, 4, maths::vec4(1, 1, 1, 1)));
 
 	Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
 	while (!window.closed())
 	{
-		//timer.reset();
-		mat4 mat = mat4::translation(vec3(5, 5, 5));
-		mat = mat * mat4::rotation(time.elapsed() * 50.0f, vec3(0, 0, 1));
-		mat = mat * mat4::translation(vec3(-5, -5, -5));
-		shader.setUniformMat4("ml_matrix", mat);
 		window.clear();
 		double x, y;
 		window.getMousePosition(x, y);
-		shader.setUniform2f("light_pos", vec2((float)(x * 16.0f / 960.f), (float)(9.0f - y * 9.0f / 540.f)));
+		shader.enable();
+		shader.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.f - 16.0f), (float)(9.0f - y * 18.0f / 540.f)));
+		shader2.enable();
+		shader2.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.f - 13.0f), (float)(9.0f - y * 18.0f / 540.f)));
 
-#if BATCH_RENDERER
-		renderer.begin(); 
-#endif
-		for (unsigned int i = 0; i < sprites.size(); i++)
-		{
-			renderer.submit(sprites[i]);
-		}
-#if BATCH_RENDERER
-		renderer.end();
-#endif
-		renderer.flush();
+		layer.render();
+		layer2.render();
 
 		window.update();
 		frames++;
@@ -108,7 +75,6 @@ int main(void)
 			printf("%d fps\n", frames);
 			frames = 0;
 		}
-		//printf("%f ms\n", time.elapsed());
 	}
 
 	return 0;
