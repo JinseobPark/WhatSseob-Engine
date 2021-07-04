@@ -3,10 +3,6 @@
 
 namespace whatsseob {
 	namespace graphics {
-		Layer::Layer()
-		{
-
-		}
 		Layer::Layer(Renderer2D* renderer, Shader* shader, maths::mat4 projectionMatrix)
 			: m_Renderer(renderer), m_Shader(shader), m_ProjectionMatrix(projectionMatrix)
 		{
@@ -31,11 +27,13 @@ namespace whatsseob {
 
 			m_Renderer->begin();
 			for (const Renderable2D* renderable : m_Renderables)
+			{
 				m_Renderer->submit(renderable);
+			}
+
 			m_Renderer->end();
 
 			m_Renderer->flush();
-			//m_Shader->disable();
 		}
 	}
 }

@@ -11,8 +11,6 @@ namespace whatsseob {
 			std::vector<Renderable2D*> m_Renderables;
 			Shader* m_Shader;
 			maths::mat4 m_ProjectionMatrix;
-		public:
-			Layer();
 		protected:
 			Layer(Renderer2D* renderer, Shader* shader, maths::mat4 projectionMatrix);
 		public:

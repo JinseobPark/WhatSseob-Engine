@@ -63,9 +63,38 @@ namespace whatsseob {
 			return left.multiply(right);
 		}
 
+		vec3 operator*(const mat4& left, const vec3& right)
+		{
+			return left.multiply(right);
+		}
+
+		vec4 operator*(const mat4& left, const vec4& right)
+		{
+			return left.multiply(right);
+		}
+
 		mat4& mat4::operator*=(const mat4& m)
 		{
 			return multiply(m);
+		}
+
+		vec3 mat4::multiply(const vec3& m) const
+		{
+			return vec3(
+				columns[0].x * m.x + columns[1].x * m.y + columns[2].x * m.z + columns[3].x,
+				columns[0].y * m.x + columns[1].y * m.y + columns[2].y * m.z + columns[3].y,
+				columns[0].z * m.x + columns[1].z * m.y + columns[2].z * m.z + columns[3].z
+			);
+		}
+
+		vec4 mat4::multiply(const vec4& m) const
+		{
+			return vec4(
+				columns[0].x * m.x + columns[1].x * m.y + columns[2].x * m.z + columns[3].x * m.w,
+				columns[0].y * m.x + columns[1].y * m.y + columns[2].y * m.z + columns[3].y * m.w,
+				columns[0].z * m.x + columns[1].z * m.y + columns[2].z * m.z + columns[3].z * m.w,
+				columns[0].w * m.x + columns[1].w * m.y + columns[2].w * m.z + columns[3].w * m.w
+			);
 		}
 
 		mat4 mat4::orthographic(float left, float right, float bottom, float top, float near, float far)
