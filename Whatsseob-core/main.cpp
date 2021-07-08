@@ -18,13 +18,13 @@
 #include "src/utils/timer.h"
 #include "src/graphics/layers/tilelayer.h"
 #include "src/graphics/layers/group.h"
+#include "src/graphics/texture.h"
 #include <time.h>
 
-#include <FreeImage.h>
 #define BATCH_RENDERER 1
 #define TEST_50K_SPRITES 0
 
-#if 0
+#if 1
 int main(void)
 {
 	using namespace whatsseob;
@@ -72,23 +72,47 @@ int main(void)
 
 	TileLayer layer2(&shader2);
 	layer2.add(new Sprite(-2, -2, 4, 4, maths::vec4(1, 1, 1, 1)));
+	glActiveTexture(GL_TEXTURE0);
 
+	Texture texture("test.png");
+	texture.bind();
+
+	//Simple2DRenderer simple;
+	//Sprite* testTexture = new Sprite(0, 0, 4, 4, maths::vec4(1, 1, 1, 1));
+
+	shader.enable();
+	shader.setUniform1i("tex", 0);
+	shader.setUniformMat4("pr_matrix", maths::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 	Timer time;
 	float timer = 0;
 	unsigned int frames = 0;
 	while (!window.closed())
 	{
 		window.clear();
+
+		/*
 		double x, y;
 		window.getMousePosition(x, y);
-		shader.enable();
 		shader.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.f - 16.0f), (float)(9.0f - y * 18.0f / 540.f)));
 		shader2.enable();
 		//shader2.setUniform2f("light_pos", vec2((float)(x * 32.0f / 960.f - 13.0f), (float)(9.0f - y * 18.0f / 540.f)));
 
 		layer.render();
 		//layer2.render();
+		*/
+		glBegin(GL_QUADS);
+		glTexCoord2f(0, 0);
+		glVertex2f(0, 0);
+		glTexCoord2f(0, 1);
+		glVertex2f(0, 4);
+		glTexCoord2f(1, 1);
+		glVertex2f(4, 4);
+		glTexCoord2f(1, 0);
+		glVertex2f(4, 0);
+		glEnd();
 
+		//simple.submit(testTexture);
+		//simple.flush();
 		window.update();
 		frames++;
 		if (time.elapsed() - timer > 1.0f)
@@ -103,6 +127,8 @@ int main(void)
 }
 #endif
 
+
+#if 0
 int main(void)
 {
 	const char* filename = "test.png";
@@ -149,7 +175,7 @@ int main(void)
 
 	std::cout << width << ", " << height << std::endl;
 
-	for (int y = 0; y < height ; y ++)
+	for (int y = height; y > 0 ; y--)
 	{
 		BYTE* pixel = (BYTE*)bits;
 		for (int x = 0; x < width; x++)
@@ -165,3 +191,4 @@ int main(void)
 
 	return 0;
 }
+#endif

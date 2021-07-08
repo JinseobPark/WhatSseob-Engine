@@ -13,10 +13,10 @@ namespace whatsseob {
 		class Shader
 		{
 		private:
-			GLuint m_ShaderID;
 			const char* m_VertPath;
 			const char* m_FragPath;
 		public:
+			GLuint m_ShaderID;
 			Shader(const char* verPath, const char* fragPath);
 			~Shader();
 
