@@ -17,10 +17,11 @@
 #include "src/graphics/sprite.h"
 #include "src/utils/timer.h"
 #include "src/graphics/layers/tilelayer.h"
+#include "src/graphics/layers/group.h"
 #include <time.h>
 
 #define BATCH_RENDERER 1
-#define TEST_50K_SPRITES 1
+#define TEST_50K_SPRITES 0
 
 int main(void)
 {
@@ -52,12 +53,18 @@ int main(void)
 		}
 	}
 #else
-	Sprite* button = new Sprite(-15.0f, 5.0f, 6, 3, maths::vec4(1, 1, 1, 1));
+	mat4 transform = mat4::rotation(45.0f, vec3(0, 0, 1)) * mat4::translation(vec3(-15.0f, 5.0f, 0.0f));
+	Group* group = new Group(transform);
+	group->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
+	group->add(new Sprite(0.5f, 0.5f, 5.0f, 2.0f, maths::vec4(1, 0, 1, 1)));
+
+	Group* button = new Group(mat4::translation(vec3(0.5f, 0.5f, 0.0f)));
+	button->add(new Sprite(0, 0, 6, 3, maths::vec4(1, 1, 1, 1)));
+	button->add(new Sprite(0.5f, 0.5f, 5.0f, 2.0f, maths::vec4(1, 0, 1, 1)));
+	//group->add(button);
+
+	layer.add(group);
 	layer.add(button);
-	//layer.push(maths::mat4(button->getPosition()));
-	layer.add(new Sprite(0.5f, 0.5f, 5.0f, 2.0f, maths::vec4(1, 0, 1, 1)));
-	//layer.pop(maths::mat4(button->getPosition()));
-	
 
 #endif
 
