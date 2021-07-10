@@ -20,8 +20,11 @@ namespace whatsseob {
 			void bind() const;
 			void unbind() const;
 
+			inline unsigned int getID() { return m_TID; }
 			inline unsigned int getWidth() { return m_Width; }
 			inline unsigned int getHeight() { return m_Height; }
+
+
 		private:
 			GLuint load();
 				 

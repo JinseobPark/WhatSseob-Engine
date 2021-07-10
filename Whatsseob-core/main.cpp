@@ -2,6 +2,7 @@
 #include "src//maths/maths.h"
 #include "src/utils/fileutils.h"
 #include "src/graphics/shader.h"
+#include "src/utils/timer.h"
 
 #include "src/graphics/buffers/buffer.h"
 #include "src/graphics/buffers/indexbuffer.h"
@@ -15,10 +16,10 @@
 
 #include "src/graphics/static_sprite.h"
 #include "src/graphics/sprite.h"
-#include "src/utils/timer.h"
 #include "src/graphics/layers/tilelayer.h"
 #include "src/graphics/layers/group.h"
 #include "src/graphics/texture.h"
+
 #include <time.h>
 
 #define BATCH_RENDERER 1
@@ -44,21 +45,37 @@ int main(void)
 
 	TileLayer layer(&shader);
 
+
+	Texture* textures[] =
+	{
+		new Texture("test.png"),
+		new Texture("test2.png"),
+		new Texture("test3.png")
+	};
+
 	for (float y = -9.0f; y < 9.0f; y ++)
 	{
 		for (float x = -16.0f; x < 16.0f; x ++)
 		{
-			layer.add(new Sprite(x, y, 0.9f, 0.9f, maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1.0f, 1.0f)));
+
+			//layer.add(new Sprite(x, y, 0.9f, 0.9f, maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1.0f, 1.0f)));
+			//if(rand() % 4 == 0)
+			//	layer.add(new Sprite(x, y, 0.9f, 0.9f, maths::vec4(rand() % 1000 / 1000.0f, rand() % 1000 / 1000.0f, 1.0f, 1.0f)));
+			//else
+				layer.add(new Sprite(x, y, 0.9f, 0.9f, textures[rand() % 3]));
+
 		}
 	}
 
-	glActiveTexture(GL_TEXTURE0);
 
-	Texture texture("test2.png");
-	texture.bind();
+	GLint texIDs[] =
+	{
+		0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+	};
+
 
 	shader.enable();
-	shader.setUniform1i("tex", 0);
+	shader.setUniform1iv("textures", texIDs, 10);
 	shader.setUniformMat4("pr_matrix", maths::mat4::orthographic(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 	Timer time;
 	float timer = 0;
@@ -76,6 +93,7 @@ int main(void)
 
 		window.update();
 		frames++;
+
 		if (time.elapsed() - timer > 1.0f)
 		{
 			timer += 1.0f;
@@ -84,6 +102,8 @@ int main(void)
 		}
 	}
 
+	for(int i = 0; i < 3; i++)
+		delete textures[i];
 	return 0;
 }
 #endif
