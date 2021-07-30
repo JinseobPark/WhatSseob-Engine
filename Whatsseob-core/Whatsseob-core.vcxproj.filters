@@ -49,6 +49,18 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{895a504f-bb3f-4457-8af8-edfac372782b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\ext">
+      <UniqueIdentifier>{aab698a5-31da-48a6-a395-12d04e42d2df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\ext\gorilla-audio">
+      <UniqueIdentifier>{b7eb8320-5147-44ad-b164-e305ef651780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\ext">
+      <UniqueIdentifier>{40efd79e-0e44-404d-ab6d-f745948ff98f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\ext\gorilla-audio">
+      <UniqueIdentifier>{77949d0d-af7d-4257-ae23-2aa63b2971c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +116,30 @@
     </ClCompile>
     <ClCompile Include="src\graphics\sprite.cpp">
       <Filter>소스 파일\graphics\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\common\gc_common.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\common\gc_thread.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\devices\ga_openal.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\ga.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\ga_stream.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="extern\gorilla-audio\gau.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\sound_manager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\sound.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +214,36 @@
     </ClInclude>
     <ClInclude Include="src\graphics\renderable2d.h">
       <Filter>헤더 파일\graphics\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\gau.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\common\gc_common.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\common\gc_thread.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\common\gc_types.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\devices\ga_openal.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\ga.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="extern\gorilla-audio\ga_internal.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audio\sound_manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\audio\sound.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\stringutils.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

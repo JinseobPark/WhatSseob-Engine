@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\bitrate.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\block.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\codebook.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\envelope.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\floor0.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\floor1.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\info.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\lookup.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\lpc.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\lsp.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\mapping0.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\mdct.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\psy.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\registry.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\res0.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\smallft.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\synthesis.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\tone.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\vorbisenc.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\vorbisfile.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\window.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\analysis.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Dependencies\libvorbis\lib\sharedbook.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\bitrate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\codebook.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\codec_internal.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\envelope.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\highlevel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\lookup.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\lookup_data.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\lpc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\lsp.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\masking.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\mdct.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\misc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\os.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\psy.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\registry.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\scales.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\smallft.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\window.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\books\coupled\res_books_stereo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\books\floor\floor_books.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\books\uncoupled\res_books_uncoupled.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\floor_all.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\psych_11.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\psych_16.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\psych_44.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\psych_8.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\residue_16.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\residue_44.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\residue_44u.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\residue_8.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_11.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_16.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_22.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_32.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_44.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_44u.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_8.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\modes\setup_X.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Dependencies\libvorbis\lib\backends.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

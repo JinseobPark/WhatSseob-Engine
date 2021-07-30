@@ -14,6 +14,8 @@ namespace whatsseob { namespace graphics {
 			if (!init())
 				glfwTerminate();
 
+			audio::SoundManager::init();
+
 			for (int i = 0; i < MAX_KEYS; i++)
 			{
 				m_Keys[i] = false;
@@ -31,6 +33,7 @@ namespace whatsseob { namespace graphics {
 
 		Window::~Window()
 		{
+			audio::SoundManager::clean();
 			glfwTerminate();
 		}
 
@@ -128,6 +131,7 @@ namespace whatsseob { namespace graphics {
 			if (error != GL_NO_ERROR)
 				std::cout << "OpenGL Error : " << error << std::endl;
 
+			audio::SoundManager::update();
 
 			glfwPollEvents();
 			glfwSwapBuffers(m_Window);
