@@ -29,7 +29,7 @@ namespace whatsseob {
 
 			glVertexAttribPointer(SHADER_VERTEX_INDEX, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)0);
 			glVertexAttribPointer(SHADER_UV_INDEX, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::uv)));
-			glVertexAttribPointer(SHADER_UV_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
+			glVertexAttribPointer(SHADER_TID_INDEX, 1, GL_FLOAT, GL_FALSE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::tid)));
 			glVertexAttribPointer(SHADER_COLOR_INDEX, 4, GL_UNSIGNED_BYTE, GL_TRUE, RENDERER_VERTEX_SIZE, (const GLvoid*)(offsetof(VertexData, VertexData::color)));
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -52,6 +52,11 @@ namespace whatsseob {
 
 			m_IBO = new IndexBuffer(indices, RENDERER_INDICES_SIZE);
 			glBindVertexArray(0); //unbind
+
+
+			//m_FTAtlas = ftgl::texture_atlas_new(512, 512, 1);
+			//m_FTFont = ftgl::texture_font_new_from_file(m_FTAtlas, 20, "arial.ttf");
+
 		}
 
 		void BatchRenderer2D::begin()
@@ -65,7 +70,7 @@ namespace whatsseob {
 		{
 			const maths::vec3& position = renderable->getPosition();
 			const maths::vec2& size = renderable->getSize();
-			const maths::vec4& color = renderable->getColor();
+			const unsigned int color = renderable->getColor();
 			const std::vector<maths::vec2>& uv = renderable->getUV();
 			const GLuint tid = renderable->getTID();
 
@@ -74,7 +79,7 @@ namespace whatsseob {
 			if (tid > 0) //key , value
 			{
 				bool found = false;
-				for (int i = 0; i < m_TextureSlots.size(); i++)
+				for (unsigned int i = 0; i < m_TextureSlots.size(); i++)
 				{
 					if (m_TextureSlots[i] == tid)
 					{
@@ -96,44 +101,35 @@ namespace whatsseob {
 					ts = (float)(m_TextureSlots.size() - 1);
 				}
 			}
-			else
-			{
-				int r = color.x * 255.0f;
-				int g = color.y * 255.0f;
-				int b = color.z * 255.0f;
-				int a = color.w * 255.0f;
-
-				unsigned int c = a << 24 | b << 16 | g << 8 | r;
-			}
-
 
 			//each vertex set.
 			m_Buffer->vertex = *m_TransformationBack * position;
 			m_Buffer->uv = uv[0];
 			m_Buffer->tid = ts;
-			m_Buffer->color = c;
+			m_Buffer->color = color;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x, position.y + size.y, position.z);
 			m_Buffer->uv = uv[1];
 			m_Buffer->tid = ts;
-			m_Buffer->color = c;
+			m_Buffer->color = color;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y + size.y, position.z);
 			m_Buffer->uv = uv[2];
 			m_Buffer->tid = ts;
-			m_Buffer->color = c;
+			m_Buffer->color = color;
 			m_Buffer++;
 
 			m_Buffer->vertex = *m_TransformationBack * maths::vec3(position.x + size.x, position.y, position.z);
 			m_Buffer->uv = uv[3];
 			m_Buffer->tid = ts;
-			m_Buffer->color = c;
+			m_Buffer->color = color;
 			m_Buffer++;
 
 			m_IndexCount += 6;
 		}
+
 
 		void BatchRenderer2D::end()
 		{
@@ -143,7 +139,7 @@ namespace whatsseob {
 
 		void BatchRenderer2D::flush()
 		{
-			for (int i = 0; i < m_TextureSlots.size(); i++)
+			for (unsigned int i = 0; i < m_TextureSlots.size(); i++)
 			{
 				glActiveTexture(GL_TEXTURE0 + i);
 				glBindTexture(GL_TEXTURE_2D, m_TextureSlots[i]);

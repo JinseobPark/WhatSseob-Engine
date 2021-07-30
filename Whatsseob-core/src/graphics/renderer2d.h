@@ -4,7 +4,6 @@
 #include <GL/glew.h>
 #include "../maths/maths.h"
 
-
 namespace whatsseob {
 	namespace graphics {
 
@@ -41,8 +40,8 @@ namespace whatsseob {
 			}
 
 			virtual void begin() {}
-			virtual void end() {}
 			virtual void submit(const Renderable2D* renderable) = 0;
+			virtual void end() {}
 			virtual void flush() = 0;
 		};
 

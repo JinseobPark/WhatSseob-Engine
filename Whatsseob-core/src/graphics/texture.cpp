@@ -26,6 +26,7 @@ namespace whatsseob {
 
 		GLuint Texture::load()
 		{
+			FIBITMAP* dib;
 			BYTE* pixels = load_image(m_FileName.c_str(), &m_Width, &m_Height);
 
 			GLuint  result;
@@ -36,7 +37,7 @@ namespace whatsseob {
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_Width, m_Height, 0, GL_BGR, GL_UNSIGNED_BYTE, pixels);
 			glBindTexture(GL_TEXTURE_2D, 0);
 
-			//delete[] pixels;
+			delete[] pixels;
 			return result;
 		}
 

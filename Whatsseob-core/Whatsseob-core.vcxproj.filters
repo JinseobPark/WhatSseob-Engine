@@ -13,145 +13,179 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{895a504f-bb3f-4457-8af8-edfac372782b}</UniqueIdentifier>
+    <Filter Include="소스 파일\graphics">
+      <UniqueIdentifier>{e6084633-1794-4aee-a344-60f713b553b4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\graphics">
-      <UniqueIdentifier>{8c78d1d7-953d-4ca0-a1a9-8b7ecdef1479}</UniqueIdentifier>
+    <Filter Include="헤더 파일\graphics">
+      <UniqueIdentifier>{cfb60039-7087-43ca-b23d-b51eae26b93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\maths">
+      <UniqueIdentifier>{eab79d65-30b1-4f2f-abe5-378ab771c0a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\utils">
+      <UniqueIdentifier>{06e22a12-715e-4258-803d-1b1c23e48dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\graphics\buffers">
+      <UniqueIdentifier>{e58a2c12-6ee1-4eb7-8bfd-b52a66d38db7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\graphics\layers">
+      <UniqueIdentifier>{311e2675-6b55-49ec-a2d1-92ff4a30b160}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\graphics\renderables">
+      <UniqueIdentifier>{241a01e4-29e9-4b30-a277-6f9b9891a1e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\maths">
+      <UniqueIdentifier>{8b2f15ab-1305-40ab-bf11-4edf1763abd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graphics\buffers">
+      <UniqueIdentifier>{c700c354-8e3c-49f6-bc6a-afee6d216bc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graphics\layers">
+      <UniqueIdentifier>{f6ec08e5-5db3-4cf2-a45b-5d706ea25eba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\graphics\renderables">
+      <UniqueIdentifier>{b816aa19-44e1-449a-afbc-31458f5f6a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{895a504f-bb3f-4457-8af8-edfac372782b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\window.cpp">
-      <Filter>src\graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="src\maths\vec2.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\maths\vec4.cpp">
+      <Filter>소스 파일\maths</Filter>
     </ClCompile>
     <ClCompile Include="src\maths\vec3.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\maths</Filter>
     </ClCompile>
-    <ClCompile Include="src\maths\vec4.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="src\maths\vec2.cpp">
+      <Filter>소스 파일\maths</Filter>
     </ClCompile>
     <ClCompile Include="src\maths\mat4.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\maths</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\window.cpp">
+      <Filter>소스 파일\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\shader.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\buffer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\indexbuffer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\buffers\vertexarray.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\simple2drenderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\batchRenderer2D.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\sprite.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\static_sprite.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\layer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\group.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\texture.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\batchRenderer2D.cpp">
+      <Filter>소스 파일\graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\buffer.cpp">
+      <Filter>소스 파일\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\indexbuffer.cpp">
+      <Filter>소스 파일\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\buffers\vertexarray.cpp">
+      <Filter>소스 파일\graphics\buffers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\group.cpp">
+      <Filter>소스 파일\graphics\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\layer.cpp">
+      <Filter>소스 파일\graphics\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
+      <Filter>소스 파일\graphics\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\static_sprite.cpp">
+      <Filter>소스 파일\graphics\renderables</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\sprite.cpp">
+      <Filter>소스 파일\graphics\renderables</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\graphics\window.h">
-      <Filter>src\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\vec2.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\vec3.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\vec4.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\maths.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\mat4.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\maths\maths_func.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\fileutils.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\shader.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\buffer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\indexbuffer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\buffers\vertexarray.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\renderable2d.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="src\graphics\batchRenderer2D.h">
+      <Filter>헤더 파일\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\renderer2d.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\shader.h">
+      <Filter>헤더 파일\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\simple2drenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\batchRenderer2D.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\sprite.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\static_sprite.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\timer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\layer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\tilelayer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\layers\group.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\texture.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\window.h">
+      <Filter>헤더 파일\graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\vec4.h">
+      <Filter>헤더 파일\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\vec2.h">
+      <Filter>헤더 파일\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\vec3.h">
+      <Filter>헤더 파일\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\maths_func.h">
+      <Filter>헤더 파일\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\maths.h">
+      <Filter>헤더 파일\maths</Filter>
+    </ClInclude>
+    <ClInclude Include="src\maths\mat4.h">
+      <Filter>헤더 파일\maths</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\imageLoad.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\timer.h">
+      <Filter>헤더 파일\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\fileutils.h">
+      <Filter>헤더 파일\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\buffer.h">
+      <Filter>헤더 파일\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\indexbuffer.h">
+      <Filter>헤더 파일\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\buffers\vertexarray.h">
+      <Filter>헤더 파일\graphics\buffers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\layer.h">
+      <Filter>헤더 파일\graphics\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\tilelayer.h">
+      <Filter>헤더 파일\graphics\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\layers\group.h">
+      <Filter>헤더 파일\graphics\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\static_sprite.h">
+      <Filter>헤더 파일\graphics\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\sprite.h">
+      <Filter>헤더 파일\graphics\renderables</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\renderable2d.h">
+      <Filter>헤더 파일\graphics\renderables</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\shaders\basic.vert" />
-    <None Include="src\shaders\basic.frag" />
+    <None Include="src\shaders\basic.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="src\shaders\basic.vert">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

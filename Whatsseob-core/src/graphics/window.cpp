@@ -1,7 +1,6 @@
 #include "window.h"
 
 namespace whatsseob { namespace graphics {
-
 		void window_resize(GLFWwindow* window, int width, int height);
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods); //temp
 		void mouse_button_callback(GLFWwindow* window, int button, int action, int mods); //temp
@@ -18,10 +17,14 @@ namespace whatsseob { namespace graphics {
 			for (int i = 0; i < MAX_KEYS; i++)
 			{
 				m_Keys[i] = false;
+				m_KeyState[i] = false;
+				m_KeyTyped[i] = false;
 			}
 			for (int i = 0; i < MAX_BUTTONS; i++)
 			{
 				m_MouseButtons[i] = false;
+				m_MouseClicked[i] = false;
+				m_MouseState[i] = false;
 			}
 
 		}
@@ -47,7 +50,7 @@ namespace whatsseob { namespace graphics {
 			}
 			glfwMakeContextCurrent(m_Window);
 			glfwSetWindowUserPointer(m_Window, this);
-			glfwSetWindowSizeCallback(m_Window, window_resize);
+			glfwSetFramebufferSizeCallback(m_Window, window_resize);
 			glfwSetMouseButtonCallback(m_Window, mouse_button_callback);
 			glfwSetCursorPosCallback(m_Window, cursor_position_callback);
 			glfwSetKeyCallback(m_Window, key_callback);
@@ -73,6 +76,14 @@ namespace whatsseob { namespace graphics {
 			return m_Keys[keycode];
 		}
 
+		bool Window::isKeyTyped(unsigned int keycode) const
+		{
+			if (keycode >= MAX_KEYS)
+				return false;
+
+			return m_KeyTyped[keycode];
+		}
+
 		bool Window::isMouseButtonPressed(unsigned int button)const
 		{
 			//Todo : log this
@@ -80,6 +91,14 @@ namespace whatsseob { namespace graphics {
 				return false;
 
 			return m_MouseButtons[button];
+		}
+
+		bool Window::isMouseButtonClicked(unsigned int button) const
+		{
+			if (button >= MAX_BUTTONS)
+				return false;
+
+			return m_MouseClicked[button];
 		}
 
 		void Window::getMousePosition(double& x, double& y)const
@@ -95,6 +114,16 @@ namespace whatsseob { namespace graphics {
 
 		void Window::update()
 		{
+			for (int i = 0; i < MAX_KEYS; i++)
+				m_KeyTyped[i] = m_Keys[i] && !m_KeyState[i];
+			
+			for (int i = 0; i < MAX_BUTTONS; i++)
+				m_MouseClicked[i] = m_MouseButtons[i] && !m_MouseState[i];
+
+			memcpy(m_KeyState, m_Keys, MAX_KEYS);
+			memcpy(m_MouseState, m_MouseButtons, MAX_BUTTONS);
+
+
 			GLenum error = glGetError();
 			if (error != GL_NO_ERROR)
 				std::cout << "OpenGL Error : " << error << std::endl;
@@ -113,6 +142,9 @@ namespace whatsseob { namespace graphics {
 		void window_resize(GLFWwindow* window, int width, int height)
 		{
 			glViewport(0, 0, width, height);
+			Window* win = (Window*)glfwGetWindowUserPointer(window);
+			win->m_Width = width;
+			win->m_Height = height;
 		}
 
 		void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
