@@ -91,7 +91,7 @@ namespace whatsseob {
 
 				if (!found)
 				{
-					if (m_TextureSlots.size() >= 32)
+					if (m_TextureSlots.size() >= RENDERER_MAX_TEXTURES)
 					{
 						end();
 						flush();
@@ -153,6 +153,9 @@ namespace whatsseob {
 
 			m_IBO->unbind();
 			glBindVertexArray(0);
+
+			m_IndexCount = 0;
+			//m_TextureSlots.clear();
 
 		}
 

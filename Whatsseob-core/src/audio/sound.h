@@ -14,9 +14,7 @@ namespace whatsseob {
 
 			ga_Sound* m_Sound;
 			ga_Handle* m_Handle;
-			gc_int32 m_Position;
 
-			bool m_ResumeLoop;
 			bool m_Playing;
 			float m_Gain;
 		public:

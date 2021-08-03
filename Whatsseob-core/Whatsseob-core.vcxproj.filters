@@ -84,9 +84,6 @@
     <ClCompile Include="src\graphics\shader.cpp">
       <Filter>소스 파일\graphics</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\simple2drenderer.cpp">
-      <Filter>소스 파일\graphics</Filter>
-    </ClCompile>
     <ClCompile Include="src\graphics\texture.cpp">
       <Filter>소스 파일\graphics</Filter>
     </ClCompile>
@@ -107,12 +104,6 @@
     </ClCompile>
     <ClCompile Include="src\graphics\layers\layer.cpp">
       <Filter>소스 파일\graphics\layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp">
-      <Filter>소스 파일\graphics\layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\graphics\static_sprite.cpp">
-      <Filter>소스 파일\graphics\renderables</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\sprite.cpp">
       <Filter>소스 파일\graphics\renderables</Filter>
@@ -141,6 +132,12 @@
     <ClCompile Include="src\audio\sound.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="tilelayer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="examples\game.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\batchRenderer2D.h">
@@ -150,9 +147,6 @@
       <Filter>헤더 파일\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\shader.h">
-      <Filter>헤더 파일\graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\simple2drenderer.h">
       <Filter>헤더 파일\graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\texture.h">
@@ -200,14 +194,8 @@
     <ClInclude Include="src\graphics\layers\layer.h">
       <Filter>헤더 파일\graphics\layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\layers\tilelayer.h">
-      <Filter>헤더 파일\graphics\layers</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\layers\group.h">
       <Filter>헤더 파일\graphics\layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\static_sprite.h">
-      <Filter>헤더 파일\graphics\renderables</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\sprite.h">
       <Filter>헤더 파일\graphics\renderables</Filter>
@@ -243,6 +231,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\stringutils.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="tilelayer.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="src\whatsseob.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

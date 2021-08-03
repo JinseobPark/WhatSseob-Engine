@@ -8,7 +8,7 @@ namespace whatsseob {
 		void loopOnFinish(ga_Handle* in_handle, void* in_context);
 
 		Sound::Sound(const std::string& name, const std::string& filename)
-			: m_Name(name), m_Filename(filename), m_Playing(false), m_ResumeLoop(false)
+			: m_Name(name), m_Filename(filename), m_Playing(false)
 		{
 			std::vector<std::string> split = split_string(m_Filename, '.');
 			if (split.size() < 2)
@@ -29,7 +29,6 @@ namespace whatsseob {
 		}
 		void Sound::play()
 		{
-			m_ResumeLoop = false;
 			m_Playing = true;
 			gc_int32 quit = 0;
 			m_Handle = gau_create_handle_sound(SoundManager::m_Mixer, m_Sound, &destroyOnFinish, &quit, NULL);
@@ -39,29 +38,27 @@ namespace whatsseob {
 		}
 		void Sound::loop()
 		{
-			//m_ResumeLoop = true;
 			gc_int32 quit = 0;
+			m_Playing = true;
 			m_Handle = gau_create_handle_sound(SoundManager::m_Mixer, m_Sound, &loopOnFinish, &quit, NULL);
 			m_Handle->sound = this;
 			ga_handle_play(m_Handle);
-			m_Playing = true;
 		}
 
 		void Sound::resume()
 		{
+			if (m_Playing)
+				return;
 			m_Playing = true;
-			gc_int32 quit = 0;
-			m_Handle = gau_create_handle_sound(SoundManager::m_Mixer, m_Sound, m_ResumeLoop ? &loopOnFinish : &destroyOnFinish, &quit, NULL);
-			m_Handle->sound = this;
 			ga_handle_play(m_Handle);
-			ga_handle_seek(m_Handle, m_Position);
 		}
 
 		void Sound::pause()
 		{
+			if (!m_Playing)
+				return;
 			m_Playing = false;
 			ga_handle_stop(m_Handle);
-			m_Position = ga_handle_tell(m_Handle, GA_TELL_PARAM_CURRENT);
 		}
 		void Sound::stop()
 		{
@@ -87,9 +84,6 @@ namespace whatsseob {
 		{
 			Sound* sound = (Sound*)in_handle->sound;
 			sound->stop();
-			//gc_int32* flag = (gc_int32*)(in_context);
-			//*flag = 1;
-			//ga_handle_destroy(in_handle);
 
 		}
 		static void loopOnFinish(ga_Handle* in_handle, void* in_context)

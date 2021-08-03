@@ -122,7 +122,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;GLEW_STATIC;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;GLEW_STATIC;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="examples\game.cpp" />
     <ClCompile Include="extern\gorilla-audio\common\gc_common.c" />
     <ClCompile Include="extern\gorilla-audio\common\gc_thread.c" />
     <ClCompile Include="extern\gorilla-audio\devices\ga_openal.c" />
@@ -183,17 +184,15 @@
     <ClCompile Include="src\graphics\buffers\vertexarray.cpp" />
     <ClCompile Include="src\graphics\layers\group.cpp" />
     <ClCompile Include="src\graphics\layers\layer.cpp" />
-    <ClCompile Include="src\graphics\layers\tilelayer.cpp" />
-    <ClCompile Include="src\graphics\simple2drenderer.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\sprite.cpp" />
-    <ClCompile Include="src\graphics\static_sprite.cpp" />
     <ClCompile Include="src\graphics\texture.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
     <ClCompile Include="src\maths\mat4.cpp" />
     <ClCompile Include="src\maths\vec2.cpp" />
     <ClCompile Include="src\maths\vec3.cpp" />
     <ClCompile Include="src\maths\vec4.cpp" />
+    <ClCompile Include="tilelayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="extern\gorilla-audio\common\gc_common.h" />
@@ -211,13 +210,10 @@
     <ClInclude Include="src\graphics\buffers\vertexarray.h" />
     <ClInclude Include="src\graphics\layers\group.h" />
     <ClInclude Include="src\graphics\layers\layer.h" />
-    <ClInclude Include="src\graphics\layers\tilelayer.h" />
     <ClInclude Include="src\graphics\renderable2d.h" />
     <ClInclude Include="src\graphics\renderer2d.h" />
     <ClInclude Include="src\graphics\shader.h" />
-    <ClInclude Include="src\graphics\simple2drenderer.h" />
     <ClInclude Include="src\graphics\sprite.h" />
-    <ClInclude Include="src\graphics\static_sprite.h" />
     <ClInclude Include="src\graphics\texture.h" />
     <ClInclude Include="src\graphics\window.h" />
     <ClInclude Include="src\maths\mat4.h" />
@@ -230,6 +226,8 @@
     <ClInclude Include="src\utils\imageLoad.h" />
     <ClInclude Include="src\utils\stringutils.h" />
     <ClInclude Include="src\utils\timer.h" />
+    <ClInclude Include="src\whatsseob.h" />
+    <ClInclude Include="tilelayer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic.frag" />
